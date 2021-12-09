@@ -1,46 +1,38 @@
 <template>
-  <div class="home">
-    <img
-      alt="Logoapp"
-      src="../assets/parkinglogo.png"
-      class="img-fluid"
-      width="420"
-      height="420"
-    />
-
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
-      <button type="button" class="btn btn-primary" v-on:click="loadLogIn">
-        Comenzar
-      </button>
+  <div class="container">
+    <div class="content">
+      <img class="Logo" src="@/assets/parkinglogo.png" alt="Logo" width="280" />
+      <h1>GESTION PARQUEADEROS</h1>
+      <h3>Control y administración de parqueaderos<br /></h3>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "inicio",
-
-  methods: {
-    loadLogIn: function () {
-      this.$router.push({ name: "login" });
-    },
-  },
-};
-</script>
-
 <style>
-.home img {
-  margin-left: 150px;
+.container {
   position: relative;
+  align-items: center;
 }
-
-.home button {
-  color: rgb(255, 255, 255);
-  background: #136fb5;
-  width: 100px;
-  height: 60px;
+h1 {
+  color: #faf1e6;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-top: 5px;
+}
+h3 {
+  color: #faf1e6;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   font-size: 30px;
-  margin-top: 400px;
-  margin-left: -410px;
+  margin-top: 0px;
+}
+img {
+  align-items: center;
+  position: relative;
+  display: block;
+  margin: auto;
 }
 </style>

@@ -1,14 +1,4 @@
 <template>
-  <div class="logo_ho">
-    <img
-      alt="Logoapp"
-      src="../assets/logo.png"
-      class="img-fluid"
-      width="250"
-      height="250"
-    />
-  </div>
-
   <div class="welcome">
     <h1>
       ¡Bienvenido <span> {{ username }} </span>!
@@ -94,14 +84,14 @@ export default {
 }
 
 span {
-  color: #fc10e6;
+  color: #e2ecf3;
   position: relative;
   font-style: italic;
 }
 
 .bloque {
   display: flex;
-  margin-left: 200px;
+  margin-left: 270px;
   position: relative;
   margin-top: 50px;
 }
@@ -111,10 +101,10 @@ span {
   background: #136fb5;
   height: 200px;
   width: 200px;
-  border-radius: 10px;
+  border-radius: 50px;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 100px;
 }
 
 .blq_items h3 {
@@ -132,7 +122,7 @@ span {
 
 .blq_items button:hover {
   color: #e5e7e9;
-  background: #fc10e6;
+  background: #136fb5;
   border: 1px solid #136fb5;
 }
 </style>

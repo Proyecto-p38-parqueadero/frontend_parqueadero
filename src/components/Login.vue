@@ -4,19 +4,13 @@
       alt="Logoapp"
       src="../assets/parkinglogo.png"
       class="img-fluid"
-      width="420"
-      height="420"
+      width="320"
+      height="320"
     />
   </div>
 
   <div class="logIn_user">
     <div class="container_logIn_user">
-      <img
-        alt="Logoapp"
-        src="../assets/parkinglogo.png"
-        height="50"
-        width="50"
-      />
       <h2>Iniciar sesión</h2>
 
       <form v-on:submit.prevent="processLogInUser">
@@ -154,7 +148,7 @@ export default {
 }
 
 .logIn_user h2 {
-  color: #136fb5;
+  color: #e0eaf3;
   margin-top: 30px;
   margin-bottom: 30px;
   font-size: 40px;
@@ -183,12 +177,12 @@ export default {
   border-radius: 5px;
   padding: 10px 25px;
   margin: 5px 0;
-  margin-left: 70px;
+  margin-left: 20px;
 }
 .logIn_user button:hover {
   color: #e5e7e9;
-  background: #fc10e6;
-  border: 1px solid #136fb5;
+  background: #0f5d99;
+  border: 1px solid #0f5d99;
 }
 
 .logIn_user h3 {

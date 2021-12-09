@@ -1,60 +1,23 @@
 <template>
-  <div id="fondo"></div>
-
   <div id="app" class="app">
-    <div class="menu">
+    <div class="header">
+      <router-link to="/"></router-link>
       <nav>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button
-            type="button"
-            class="btn btn-link"
-            v-if="is_auth"
-            v-on:click="logOut"
-          >
-            Cerrar Sesión
-          </button>
-          <button
-            type="button"
-            class="btn btn-link"
-            v-if="!is_auth"
-            v-on:click="loadLogIn"
-          >
-            <fa icon="user" /> Iniciar Sesión
-          </button>
-          <button
-            type="button"
-            class="btn btn-link"
-            v-if="!is_auth"
-            v-on:click="loadSignUp"
-          >
-            Registro Usuario
-          </button>
-        </div>
+        <button v-if="session" v-on:click="loadUserHome">Inicio Admin</button>
+        <button v-if="session" v-on:click="logOut">Cerrrar Sesión</button>
+        <button v-if="!session" v-on:click="loadSignUp">Registrarme</button>
+        <button v-if="!session" v-on:click="loadLogIn">Iniciar Sesión</button>
       </nav>
     </div>
-  </div>
 
-  <div class="main-component">
-    <router-view
-      v-on:completedLogIn="completedLogIn"
-      v-on:completedSignUp="completedSignUp"
-      v-on:logOut="logOut"
-    >
-    </router-view>
+    <div class="main-component">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-
-  data: function () {
-    return {
-      is_auth: false,
-    };
-  },
-  components: {},
-  /*
+/*
   methods: {
     verifyAuth: function () {
       this.is_auth = localStorage.getItem("isAuth") || false;
@@ -97,34 +60,73 @@ export default {
   },
 };
 */
-};
 </script>
 
 <style>
-#fondo {
-  background-image: url("./assets/fondoacuarela.jpg");
-  width: 100%;
+body {
   height: 100%;
-  background-size: cover;
-  position: fixed;
-}
-.menu nav {
-  height: 100%;
-  width: 20%;
-  display: flex;
-  font-size: 20px;
 }
 
-.menu nav button {
-  color: rgb(3, 13, 68);
-  font-size: 20px;
-  border: none;
-  padding: 10px 20px;
-  width: 190px;
-  height: 50px;
-  box-shadow: none;
-  text-decoration: none;
-  margin-left: 980px;
-  margin-top: 15px;
+.app {
+  background-image: url(./assets/fondo.jpg);
+  background-blend-mode: darken;
+  background-color: #0000006b;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+
+  font-family: Quicksand, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #ffffff;
+}
+
+.header {
+  margin: 0%;
+  padding: 0;
+  width: 100%;
+  height: 10vh;
+  min-height: 75px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav {
+  height: 100%;
+  width: 20%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  font-size: 18px;
+}
+
+.header nav button {
+  color: #fdfaf6;
+  background: #136fb5;
+
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+
+.header button:hover {
+  color: #0a150c;
+  background: #8bac97;
+  border: 0px;
 }
 </style>
