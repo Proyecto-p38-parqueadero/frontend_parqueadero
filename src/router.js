@@ -4,12 +4,7 @@ import Login from "./components/Login.vue";
 import SignUp from "./components/SignUp.vue";
 import Profile from "./components/Profile.vue";
 import Parqueadero from "./components/Parqueadero.vue";
-/*import Productos from "./components/Productos.vue";
-import Inventario from "./components/Inventario.vue";
-import Proveedores from "./components/Proveedores.vue";
-import Pedidos from "./components/Pedidos.vue";
-import ListaProveedores from "./components/ListaProveedores.vue";
-*/
+import Vehiculo from "./components/Vehiculo.vue";
 
 const routes = [
   {
@@ -38,33 +33,13 @@ const routes = [
     name: "parqueadero",
     component: Parqueadero,
   },
-  /*
   {
-    path: "/producto",
-    name: "producto",
-    component: Productos,
+    path: "/vehiculo",
+    name: "vehiculo",
+    component: Vehiculo,
   },
-  {
-    path: "/inventario",
-    name: "inventario",
-    component: Inventario,
-  },
-  {
-    path: "/proveedores",
-    name: "proveedores",
-    component: Proveedores,
-  },
-  {
-    path: "/pedidos",
-    name: "pedidos",
-    component: Pedidos,
-  },
-  {
-    path: "/listaproveedores",
-    name: "listaprov",
-    component: ListaProveedores,
-  },
-  */
+  
+  
 ];
 
 const router = createRouter({
