@@ -7,25 +7,25 @@
 
       <br />
 
-      <form v-on:submit.prevent="processVehiculo">
+      <form v-on:submit.prevent="Createvehiculo">
         <div class="form-group">
-          <label for="Placa">Placa</label>
+          <label for="placa">Placa</label>
           <input
             type="text"
-            v-model="user.Placa"
+            v-model="vehiculo.placa"
             class="form-control"
-            id="Placa"
-            placeholder="Enter Placa"
+            id="placa"
+            placeholder="Ingresar Placa"
           />
         </div>
 
         <div class="form-group">
-          <label for="Propietario">Propietario</label>
+          <label for="propietario">Propietario</label>
           <input
-            type="Propietario"
-            v-model="user.Propietario"
+            type="propietario"
+            v-model="vehiculo.propietario"
             class="form-control"
-            id="Propietario"
+            id="propietario"
             placeholder="Enter Propietario"
           />
         </div>
@@ -38,42 +38,58 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
 export default {
-  name: "Vehiculo",
+  name: "Createvehiculo",
 
   data: function () {
     return {
-      user: {
-        Placa: "",
-        Propietario: "",
+      vehiculo: {
+        placa:"",
+        propietario:"",
       },
     };
   },
+
+  methods:{
+      car: function(){
+              {
+              
+              this.$router.push({ name: "profile" })
+               }
+          alert("vehículo ingresado correctamente")
+
+      },
+
+    Createvehiculo: async function(){
+       await this.$apollo.mutate(
+        {
+          mutation: gql`
+                   mutation Createvehiculo($vehiculo: vehiculoCreate!) {
+  createvehiculo(vehiculo: $vehiculo) {
+    placa
+    propietario
+    fecha_ingreso
+  }
+}
+  `,
+    variables:{
+      vehiculo: this.vehiculo
+      }
+
+    })
+
+        {
+                alert("vehículo ingresado correctamente")
+                this.$router.push({ name: "profile" })
+        }
+
+    }
+
+  }
 };
 
-/*methods: {
-    processSignUp: function () {
-      axios
-        .post("https://av-api-p36.herokuapp.com/agencia/user/", this.user)
-        .then((result) => {
-          this.user = {
-            username: "",
-            password: "",
-            name: "",
-            email: "",
-          };
 
-          this.$router.push({ name: "LogIn" });
-        })
-
-        .catch((error) => {
-          console.log(error);
-          alert("ERROR: Fallo en el registro.");
-        });
-    },
-  },
-};
-*/
 </script>
 
 <style>

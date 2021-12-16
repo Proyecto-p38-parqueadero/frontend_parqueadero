@@ -41,78 +41,47 @@
 </template>
 
 <script>
-export default {
-  name: "Login",
-
-  data: function () {
-    return {
-      user: {
-        username: "",
-        password: "",
-      },
-    };
-  },
-};
-
-/*methods: {
-    processLogInUser: function () {
-      axios
-        .post("https://farmatic-be.herokuapp.com/login/", this.user, {
-          headers: {},
-        })
-        .then((result) => {
-          let dataLogIn = {
-            username: this.user.username,
-            token_access: result.data.access,
-            token_refresh: result.data.refresh,
-          };
-
-          this.$emit("completedLogIn", dataLogIn);
-        })
-        .catch((error) => {
-          if (error.response.status == "401")
-            alert("ERROR 401: Credenciales Incorrectas.");
-        });
-    },
-  },
-};
-*/
-/*export default {
-    name: "Login",
-
-    data: function() {
-        return {
-            user: {
-                username:"",
-                password:""
-            }
-        }
-    },
-
-    methods: {
-       processLogInUser: function() {
-           axios.post ("",
-                this.user,
-                {headers: {}}
-                )
-                .then((result) => {
-                    let dataLogin = {
-                        username: this.user.username,
-                        token_access: result.data.access,
-                        token_refresh: result.data.refresh,
-                        }
-
-                        this.$emit('completedLogIn', dataLogin)
-                    })
-                    .catch((error) => {
-                        if (error.response.status == "401")
-                            alert("ERROR 401: Credenciales Incorrectas.");
-                    });
+    import gql from 'graphql-tag';
+    export default {
+        name: "LogIn",
+        
+        data: function(){
+            return {
+                user: {
+                    username : "",
+                    password : ""
                 }
             }
-       }
+        },
 
-*/
+        methods: {
+            processLogInUser: async function(){
+                console.log(this.user);
+                await this.$apollo.mutate(
+                    {
+                        mutation: gql`
+                            mutation LogIn($credentials: CredentialsInput!) {
+                              logIn(credentials: $credentials) {
+                                refresh
+                                access
+                              }
+                            }
+                        `,
+                        variables: {
+                          credentials: this.user
+                            
+                        }
+                    }
+                )
+                 {
+                   alert("Usuario Logueado correctamente")
+                this.$router.push({ name: "profile" })
+                
+                }
+                
+            }
+        }
+    }
 </script>
 
 <style>

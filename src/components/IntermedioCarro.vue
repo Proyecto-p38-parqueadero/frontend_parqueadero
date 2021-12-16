@@ -7,7 +7,7 @@
 
   <div class="bloque">
     <div class="blq_items">
-      <button type="button" class="btn btn-primary" v-on:click="park">
+      <button type="button" class="btn btn-primary" v-on:click="RegistarVehiculo">
         <img
           alt="Logoapp"
           src="../assets/parqueadero.png"
@@ -15,11 +15,11 @@
           width="100"
           height="100"
         />
-        <h3>Parqueadero</h3>
+        <h2>Registrar Carro</h2>
       </button>
     </div>
     <div class="blq_items">
-      <button type="button" class="btn btn-primary" v-on:click="cars">
+      <button type="button" class="btn btn-primary" v-on:click="ConsultasVehiculo">
         <img
           alt="Logoapp"
           src="../assets/vehiculo.png"
@@ -27,7 +27,7 @@
           width="100"
           height="100"
         />
-        <h3>Vehiculo</h3>
+        <h2>Consultas Carro</h2>
       </button>
     </div>
   </div>
@@ -45,18 +45,19 @@ export default {
 
 
 methods: {
-    park: function(){
+    RegistarVehiculo: function(){
 
-      this.$router.push({ name: "IntermedioParqueadero" })
+      this.$router.push({ name: "vehiculo" })
     },
 
-    cars: function(){
+    ConsultasVehiculo: function(){
 
-      this.$router.push({ name: "IntermedioCarro" })
+      this.$router.push({ name: "ConsultasCarros" })
     }
 
 }
 }
+
 </script>
 
 <style>

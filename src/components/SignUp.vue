@@ -7,7 +7,7 @@
 
       <br />
 
-      <form v-on:submit.prevent="processSignUp">
+      <form v-on:submit.prevent="signUpUser">
         <div class="form-group">
           <label for="username">Usuario</label>
           <input
@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
+
 export default {
   name: "SignUp",
 
@@ -72,34 +74,38 @@ export default {
       },
     };
   },
-};
 
-/*methods: {
-    processSignUp: function () {
-      axios
-        .post("https://av-api-p36.herokuapp.com/agencia/user/", this.user)
-        .then((result) => {
-          this.user = {
-            username: "",
-            password: "",
-            name: "",
-            email: "",
-          };
+methods: {
+    signUpUser: async function () {
+      await this.$apollo.mutate({
 
-          this.$router.push({ name: "LogIn" });
-        })
+        mutation: gql`
+        mutation Mutation($userInput: SignUpInput) {
+        signUpUser(userInput: $userInput) {
+              refresh
+              access
+    
+  }
+} ` ,
+        variables: {
+          userInput: this.user
+        }
 
-        .catch((error) => {
-          console.log(error);
-          alert("ERROR: Fallo en el registro.");
-        });
+      })
+          {
+                    
+          this.$router.push({ name: "inicio" })
+          }
+        alert("Usuario Creado correctamente")
+      
     },
   },
 };
-*/
+
 </script>
 
 <style>
+/*
 .signUp_user {
   margin: 0%;
   padding: 0%;
@@ -153,5 +159,5 @@ export default {
   color: #0a150c;
   background: #8bac97;
   border: 0;
-}
+*/
 </style>

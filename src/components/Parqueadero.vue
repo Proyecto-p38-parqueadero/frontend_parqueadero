@@ -7,48 +7,48 @@
 
       <br />
 
-      <form v-on:submit.prevent="processParqueadero">
+      <form v-on:submit.prevent="registrarParqueadero">
         <div class="form-group">
-          <label for="Nombre">Nombre</label>
+          <label for="nombre">Nombre</label>
           <input
             type="text"
-            v-model="user.Nombre"
+            v-model="user.nombre"
             class="form-control"
-            id="Nombre"
-            placeholder="Enter Nombre"
+            id="nombre"
+            placeholder="Ingresar Nombre"
           />
         </div>
 
         <div class="form-group">
-          <label for="Administrador">Administrador</label>
+          <label for="administrador">Administrador</label>
           <input
-            type="Administrador"
-            v-model="user.Administrador"
+            type="administrador"
+            v-model="user.administrador"
             class="form-control"
-            id="Administrador"
-            placeholder="Enter Administrador"
+            id="administrador"
+            placeholder="Ingresar Administrador"
           />
         </div>
 
         <div class="form-group">
-          <label for="Telefono">Telefono</label>
+          <label for="telefono">Telefono</label>
           <input
             type="text"
-            v-model="user.Telefono"
+            v-model="user.telefono"
             class="form-control"
-            id="Telefono"
-            placeholder="Enter Telefono"
+            id="telefono"
+            placeholder="Ingresar Telefono"
           />
         </div>
 
         <div class="form-group">
-          <label for="Direccion">Direccion</label>
+          <label for="direccion">Direccion</label>
           <input
             type="text"
-            v-model="user.Direccion"
+            v-model="user.direccion"
             class="form-control"
-            id="Direccion"
-            placeholder="Enter Direccion"
+            id="direccion"
+            placeholder="Ingresar Direccion"
           />
         </div>
         <div class="form-group">
@@ -58,17 +58,17 @@
             v-model="user.email"
             class="form-control"
             id="email"
-            placeholder="Enter email"
+            placeholder="Ingresar email"
           />
         </div>
         <div class="form-group">
-          <label for="Ciudad">Ciudad</label>
+          <label for="ciudad">Ciudad</label>
           <input
             type="text"
-            v-model="user.Ciudad"
+            v-model="user.ciudad"
             class="form-control"
-            id="Ciudad"
-            placeholder="Enter Ciudad"
+            id="ciudad"
+            placeholder="Ingresar Ciudad"
           />
         </div>
         <br />
@@ -79,46 +79,58 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
 export default {
   name: "Parqueadero",
 
   data: function () {
     return {
       user: {
-        Nombre: "",
-        Administrador: "",
-        Telefono: "",
-        Direccion: "",
+        nombre: "",
+        administrador: "",
+        telefono: "",
+        direccion: "",
         email: "",
-        Ciudad: "",
+        ciudad: "",
       },
     };
   },
-};
 
-/*methods: {
-    processSignUp: function () {
-      axios
-        .post("https://av-api-p36.herokuapp.com/agencia/user/", this.user)
-        .then((result) => {
-          this.user = {
-            username: "",
-            password: "",
-            name: "",
-            email: "",
-          };
+methods: {
 
-          this.$router.push({ name: "LogIn" });
-        })
+  registrarParqueadero: async function(){
+    await this.$apollo.mutate({
 
-        .catch((error) => {
-          console.log(error);
-          alert("ERROR: Fallo en el registro.");
-        });
+      mutation:gql`mutation Createparqueaero($parqueaderoCreate: ParkingCreate!) {
+              createparqueaero(ParqueaderoCreate: $parqueaderoCreate) {
+                nombre
+                administrador
+                telefono
+                direccion
+                email
+                ciudad
+  }
+}`,
+      variables:{
+          parqueaderoCreate: this.user
+
+      }
+
+      })
+          {
+                    
+          alert("Parqueadero Creado correctamente")
+               this.$router.push({ name: "profile" })
+          }
+        
+      
     },
   },
 };
-*/
+
+
+
+
 </script>
 
 <style>

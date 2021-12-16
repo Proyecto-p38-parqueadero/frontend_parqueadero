@@ -17,8 +17,8 @@
 </template>
 
 <script>
-/*
-  methods: {
+ export default{
+ methods: {
     verifyAuth: function () {
       this.is_auth = localStorage.getItem("isAuth") || false;
 
@@ -42,12 +42,11 @@
     
 
     completedLogIn: function (data) {
-      localStorage.setItem("isAuth", true);
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("token_access", data.token_access);
-      localStorage.setItem("token_refresh", data.token_refresh);
       alert("Autenticación Exitosa");
-      this.verifyAuth();
+     
+     if (data ==false)
+       this.$router.post({ name: "profile" })
+  //    this.verifyAuth();
     },
 
     completedSignUp: function (data) {
@@ -59,7 +58,7 @@
     this.verifyAuth();
   },
 };
-*/
+
 </script>
 
 <style>
