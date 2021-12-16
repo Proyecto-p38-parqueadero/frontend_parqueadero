@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <h1>
-      ¡Bienvenido <span> {{ username }} </span>!
+      ¡Bienvenido <span>  </span>!
     </h1>
   </div>
 

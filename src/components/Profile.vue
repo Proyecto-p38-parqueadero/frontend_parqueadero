@@ -1,7 +1,10 @@
 <template>
-  <div class="welcome">
+  <div id ="profile" class="nav">
     <h1>
-      ¡Bienvenido <span> {{ username }} </span>!
+      ¡Bienvenido <span>  </span>!
+      <nav>
+  <button type= "submit" class="cerrar sesión" v-on:click="RegistarVehiculo" 
+  >Cerrar sesión </button></nav>
     </h1>
   </div>
 
@@ -53,6 +56,10 @@ methods: {
     cars: function(){
 
       this.$router.push({ name: "IntermedioCarro" })
+    },
+    RegistarVehiculo: function(){
+
+      this.$router.push({ name: "inicio" })
     }
 
 }
@@ -122,4 +129,29 @@ span {
   background: #136fb5;
   border: 1px solid #136fb5;
 }
+.header button:hover {
+  color: #0a150c;
+  background: #8bac97;
+  border: 0px;
+}
+.header nav {
+  height: 100%;
+  width: 20%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  font-size: 18px;
+}
+
+.header nav button {
+  color: #fdfaf6;
+  background: #136fb5;
+
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+
 </style>

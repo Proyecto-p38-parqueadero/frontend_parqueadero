@@ -1,7 +1,7 @@
 <template>
   <div class="welcome">
     <h1>
-      ¡Bienvenido <span> {{ username }} </span>!
+      ¡Bienvenido <span> </span>!
     </h1>
   </div>
 
@@ -19,12 +19,12 @@
             placeholder="PLaca a consultar"
           />
         </div>
-      <div>Placa consultada:</div>
-      <div>{{vehiculoByplaca.placa}}</div>
-      <div>Propietario:</div>
-      <div>{{vehiculoByplaca.propietario}}</div>
-      <div>Fecha Ingreso</div>
-      <div>{{vehiculoByplaca.fecha_ingreso}}</div>
+      <div><h3>Placa consultada:</h3></div>
+      <div class="estilo1"><li>{{vehiculoByplaca.placa}}</li></div>
+      <div><h3>Propietario:</h3></div>
+      <div class="estilo1"><li>{{vehiculoByplaca.propietario}}</li></div>
+      <div><h3>Fecha Ingreso</h3></div>
+      <div class="estilo1"><li>{{vehiculoByplaca.fecha_ingreso}}</li></div>
       
       </form>
     
@@ -125,5 +125,17 @@ span {
   color: #e5e7e9;
   background: #136fb5;
   border: 1px solid #136fb5;
+}
+
+.estilo1 {
+font-family: sans-serif;
+font-size: 18px;
+font-weight: 400;
+color: #ffffff;
+background: #889ccf;
+margin: 0 0 25px;
+overflow: hidden;
+padding: 20px;
+size: 500px;
 }
 </style>

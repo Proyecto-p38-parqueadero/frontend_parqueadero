@@ -105,7 +105,7 @@ methods: {
 </script>
 
 <style>
-/*
+
 .signUp_user {
   margin: 0%;
   padding: 0%;
@@ -159,5 +159,5 @@ methods: {
   color: #0a150c;
   background: #8bac97;
   border: 0;
-*/
+}
 </style>

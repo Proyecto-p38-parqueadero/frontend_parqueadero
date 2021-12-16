@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <img class="Logo" src="@/assets/parkinglogo.png" alt="Logo" width="280" />
-      <h1>GESTION PARQUEADEROS</h1>
+      <h1>GECOPAR GESTION PARQUEADEROS</h1>
       <h3>Control y administración de parqueaderos<br /></h3>
     </div>
   </div>
